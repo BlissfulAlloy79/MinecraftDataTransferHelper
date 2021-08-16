@@ -1,7 +1,7 @@
 # MinecraftDataTransferHelper
 A handy helper for transferring minecraft online server data to offline server
 
-Works on bungeecord with offline mode subserver
+Works on bungeecord with offline mode subserver\n
 Normal offline mode server not 100% working
 
 ## Prep file
