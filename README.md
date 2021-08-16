@@ -20,8 +20,12 @@ You have to prepare a uuid.json file(attached in main)
 the uuid behind the names have to be the real uuid from mojang
 
 why i don't get the uuid directly from api.mojang?
+
 cuz im lazy¯\_(ツ)_/¯
+
 ~~maybe do it in the future~~
+
+
 
 put both `uuid.json` and `datatrans.py/statstrans.py` in the same directroy
 
