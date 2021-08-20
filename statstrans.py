@@ -2,28 +2,32 @@ import json
 import shutil
 import requests
 
-#loc
-src = r'.\s\loc.json'
-dst = r'.\stats\loc.json'
+# loc
+src = r'.\world\stats\loc.json'
+dst = r'.\\world\stats\loc.json'
 
-#get offline uuid
+
+# get offline uuid
 def offline_uuid(name):
     url = f'http://tools.glowingmines.eu/convertor/nick/{name}'
     r = requests.get(url).json()
     print('offline: ', r['offlinesplitteduuid'])
     return r['offlinesplitteduuid']
 
-with open('uuid.json', 'r', encoding = 'utf-8') as f:
-    t = json.load(f)
-    print(type(t))
-    for i in t:
-        print(str(i) + ':')
-        print('online: ', t[i])
+
+# main
+with open('usercache.json', 'r', encoding='utf-8') as f:
+    js = json.load(f)
+    for i in js:
+        print(i['name'] + ':')
+        print('server uuid:', i['uuid'])
         try:
-            nsrc = src.replace('loc', t[i])
-            ndst = dst.replace('loc', offline_uuid(i))
+            nsrc = src.replace('loc', i['uuid'])
+            ndst = dst.replace('loc', offline_uuid(i['name']))
             shutil.copy(nsrc, ndst)
         except FileNotFoundError:
             print('file not found:\n')
+        except shutil.SameFileError:
+            print('already have file')
         else:
             print('success')
